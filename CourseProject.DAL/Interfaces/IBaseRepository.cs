@@ -8,12 +8,12 @@ namespace CourseProject.DAL.Interfaces
 {
     public interface IBaseRepository<T>
     {
-        bool Create(T entity);
+        Task<bool> Create(T entity);
 
-        T GetById(int id);
+        Task<T> GetById(int id);
 
         Task<List<T>> Select();
 
-        bool Delete(T entity);
+        Task<bool> Delete(T entity);
     }
 }

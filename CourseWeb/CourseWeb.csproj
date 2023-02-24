@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CourseProject.DAL\CourseProject.DAL.csproj" />
+    <ProjectReference Include="..\CourseProject.Service\CourseProject.Service.csproj" />
   </ItemGroup>
 
 </Project>

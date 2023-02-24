@@ -19,24 +19,29 @@ namespace CourseProject.DAL.Repositories
             _db = db;
         }
 
-        public bool Create(User entity)
+        public async Task<bool> Create(User entity)
         {
-            throw new NotImplementedException();
+            await _db.Users.AddAsync(entity);
+            await _db.SaveChangesAsync();
+
+            return true;
         }
 
-        public bool Delete(User entity)
+        public async Task<bool> Delete(User entity)
         {
-            throw new NotImplementedException();
+            _db.Users.Remove(entity);
+            _db.SaveChangesAsync();
+            return true;
         }
 
-        public User GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _db.Users.FirstOrDefaultAsync(x=> x.UserId == id);
         }
 
-        public User GetByName(string name)
+        public async Task<User> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await _db.Users.FirstOrDefaultAsync(x => x.UserName == name);
         }
 
         public Task<List<User>> Select()

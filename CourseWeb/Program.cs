@@ -2,6 +2,8 @@
 using CourseProject.DAL;
 using CourseProject.DAL.Interfaces;
 using CourseProject.DAL.Repositories;
+using CourseProject.Service.Implementations;
+using CourseProject.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Security.Cryptography.X509Certificates;
@@ -22,8 +24,9 @@ namespace CourseWeb
             var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext<PracticeControlContext>(options => options.UseNpgsql(connection));
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             var app = builder.Build();
 
